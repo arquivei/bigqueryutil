@@ -45,8 +45,8 @@ func main() {
 	// The projection fields are a required field on the HTTP API.
 	var projectionExample = []string{"AccessKey"}
 
-	// BuildColumnsClause returns "*" if projection is empty or the string that represents
-	// the columnsClauseBuilder with all columns required by projection.
+	// BuildColumnsClause returns the string that represents the columnsClauseBuilder with all columns required
+	// by projection, or "*" if projection is nil.
 	returnedColumns := bigqueryutil.BuildColumnsClause(queryBuilderExample, projectionExample)
 
 	// EncodeBigqueryWhereClause transforms a struct into a bigquery's query and parameters list.
