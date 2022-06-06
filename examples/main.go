@@ -10,7 +10,7 @@ import (
 
 func main() {
 
-	// QueryBuilderSpec represents the spec for the query builder
+	// QueryBuilderSpec represents the spec for the query builder.
 	var queryBuilderExample = bigqueryutil.QueryBuilderSpec{
 		RepeatedColumns: map[string]struct{}{
 			"AccessKey": {},
