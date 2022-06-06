@@ -18,7 +18,7 @@
 
 ## <a name="Description" /> 1. Description
 
-BigQueryUtil is a library to build a SQL query and Big Query Parameters based on provided columns, a sql template and a filter.
+BigQueryUtil is a library to build a SQL query and Big Query Parameters based on provided columns, a query template and a filter.
 
 ## <a name="TechnologyStack" /> 2. Technology Stack
 
