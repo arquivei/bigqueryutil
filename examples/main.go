@@ -4,11 +4,15 @@ import (
 	"fmt"
 	"time"
 
+<<<<<<< HEAD
 	"github.com/arquivei/foundationkit/ref"
+=======
+>>>>>>> 782b339c4604ada956bae913b3aaaa02fa14b36f
 	"github.com/bigqueryutil"
 )
 
 func main() {
+<<<<<<< HEAD
 
 	// QueryBuilderSpec represents the spec for the query builder
 	var queryBuilderExample = bigqueryutil.QueryBuilderSpec{
@@ -22,12 +26,25 @@ func main() {
 	}
 
 	// TimeRange represents a time with a beginning and an end.
+=======
+	var queryBuilderExample = bigqueryutil.QueryBuilderSpec{
+		RepeatedColumns: map[string]struct{}{
+			"name": {},
+			"age":  {},
+			"sex":  {},
+		},
+	}
+
+>>>>>>> 782b339c4604ada956bae913b3aaaa02fa14b36f
 	var TimeRangeExample = bigqueryutil.TimeRange{
 		From: time.Date(2022, 1, 1, 0, 0, 0, 0, time.UTC),
 		To:   time.Date(2022, 2, 1, 0, 0, 0, 0, time.UTC),
 	}
 
+<<<<<<< HEAD
 	// filter struct represents a filter for a query with Big Query's tags.
+=======
+>>>>>>> 782b339c4604ada956bae913b3aaaa02fa14b36f
 	type filter struct {
 		Namespace string                  `bq:",omitempty"`
 		CreatedAt *bigqueryutil.TimeRange `bq:",omitempty"`
@@ -39,6 +56,7 @@ func main() {
 		Namespace: "namespace",
 		CreatedAt: &TimeRangeExample,
 		Owners:    []string{"owner1", "owner2"},
+<<<<<<< HEAD
 		IsTaker:   ref.Bool(false),
 	}
 
@@ -50,10 +68,21 @@ func main() {
 	returnedColumns := bigqueryutil.BuildColumnsClause(queryBuilderExample, projectionExample)
 
 	// EncodeBigqueryWhereClause transforms a struct into a bigquery's query and parameters list.
+=======
+		IsTaker:   ref(true),
+	}
+
+	var projectionExample []string
+
+	returnedColumns := bigqueryutil.BuildColumnsClause(queryBuilderExample, projectionExample)
+	fmt.Println(returnedColumns)
+
+>>>>>>> 782b339c4604ada956bae913b3aaaa02fa14b36f
 	whereExample, queryParametersExample, err := bigqueryutil.EncodeBigqueryWhereClause(filterExample)
 	if err != nil {
 		panic(err)
 	}
+<<<<<<< HEAD
 	// These parameters will be passed to Big Query and will be used in the query.
 	fmt.Printf("Big Query Parameters: \n%+v\n\n", queryParametersExample)
 
@@ -70,4 +99,14 @@ func main() {
 	   SELECT * EXCEPT(r) FROM (SELECT AccessKey, ROW_NUMBER() OVER (PARTITION BY AccessKey, Owner order by Version desc) r FROM `TABLE_EXAMPLE` WHERE Namespace = @Namespace AND CreatedAt BETWEEN @CreatedAtFrom AND @CreatedAtTo AND Owner IN (@Owner0,@Owner1) AND NOT IsTaker) WHERE r = 1;
 	*/
 
+=======
+
+	fmt.Printf("%+v\n", whereExample)
+	fmt.Printf("%+v\n", queryParametersExample)
+
+}
+
+func ref[T any](v T) *T {
+	return &v
+>>>>>>> 782b339c4604ada956bae913b3aaaa02fa14b36f
 }
