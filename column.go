@@ -40,7 +40,7 @@ func (cns *columnNameSegment) fullnameInsideArray() string {
 }
 
 // fullname will return the name of the segment pre-appended with its parent fullnameif exists.
-// Similar to fullnameInsideArray, but correctly handles the full path
+// Similar to fullnameInsideArray, but correctly handles the full path.
 func (cns *columnNameSegment) fullname() string {
 	if cns.parent != nil {
 		return cns.parent.fullname() + "." + cns.name
@@ -49,14 +49,14 @@ func (cns *columnNameSegment) fullname() string {
 }
 
 // columnsClauseBuilder takes columns names in it's string form like "NFe.infNFe.emit.CNPJ" and builds
-// a bigquery columns clause with complex fields as structs, like "struct(struct(struct(NFe.infNFe.emit.CNPJ) AS emit) AS infNFe) AS NFe"
+// a bigquery columns clause with complex fields as structs, like "struct(struct(struct(NFe.infNFe.emit.CNPJ) AS emit) AS infNFe) AS NFe".
 type columnsClauseBuilder struct {
 	columns []*columnNameSegment
 	parent  *columnNameSegment
 	spec    QueryBuilderSpec
 }
 
-// AddColumn takes a columns name
+// AddColumn takes a columns name.
 func (b *columnsClauseBuilder) AddColumn(c string) {
 	s := strings.Split(c, ".")
 	b.addColumn(s[0], s[1:])
@@ -122,7 +122,8 @@ func (b *columnsClauseBuilder) getSegment(name string) *columnNameSegment {
 	return nil
 }
 
-// write writes all added columns to the string writer
+// nolint: errcheck
+// write writes all added columns to the string writer.
 func (b *columnsClauseBuilder) write(w io.StringWriter) {
 	for i, c := range b.columns {
 		if i > 0 {
@@ -144,7 +145,7 @@ func (b *columnsClauseBuilder) write(w io.StringWriter) {
 			w.WriteString(")) AS ")
 			w.WriteString(c.name)
 		default:
-			panic("unkown columnNameSegment")
+			panic("unknown columnNameSegment")
 		}
 	}
 }
@@ -160,7 +161,7 @@ func isRepeated(spec QueryBuilderSpec, field string) bool {
 	return ok
 }
 
-// BuildColumnsClause TODO
+// BuildColumnsClause builds a column clause.
 func BuildColumnsClause(spec QueryBuilderSpec, projection []string) string {
 	// Sanity check.
 	// The projection fields are a required field on the HTTP API.

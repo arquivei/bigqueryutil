@@ -21,7 +21,7 @@ import (
 // 		OwnerRoles              []string               	`bq:",unnest,omitempty"`
 // 		IsTaker                 *bool                  	`bq:",omitempty"`
 // 	}
-// nolint:gocyclo
+// nolint: gocognit,cyclop
 func EncodeBigqueryWhereClause(filter interface{}) (string, []bigquery.QueryParameter, error) {
 	rv := reflect.ValueOf(filter)
 	if rv.Kind() != reflect.Struct {
@@ -115,7 +115,7 @@ func EncodeBigqueryWhereClause(filter interface{}) (string, []bigquery.QueryPara
 				return "", nil, errors.New(name + " struct is not supported")
 			}
 		default:
-			return "", nil, errors.New(name + " is of unkown type: " + fkind.String())
+			return "", nil, errors.New(name + " is of unknown type: " + fkind.String())
 		}
 		if fparam.unnest {
 			fsb.WriteString(")")
@@ -172,7 +172,7 @@ type fieldParameters struct {
 	name      string
 }
 
-// AppendParam TODO
+// AppendParam append parameters for given @params.
 func AppendParam(
 	params []bigquery.QueryParameter,
 	name string,
