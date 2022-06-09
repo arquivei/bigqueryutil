@@ -10,6 +10,7 @@ import (
 )
 
 func TestMarshalWhereClause(t *testing.T) {
+	t.Parallel()
 	type want struct {
 		query  string
 		params []bigquery.QueryParameter
