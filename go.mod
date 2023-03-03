@@ -3,7 +3,7 @@ module github.com/bigqueryutil
 go 1.19
 
 require (
-	cloud.google.com/go/bigquery v1.47.0
+	cloud.google.com/go/bigquery v1.48.0
 	github.com/arquivei/foundationkit v0.3.3
 	github.com/stretchr/testify v1.8.2
 )
