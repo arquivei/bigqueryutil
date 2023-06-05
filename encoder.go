@@ -12,16 +12,17 @@ import (
 
 // EncodeBigqueryWhereClause transforms a struct into a bigquery's query and parameters list.
 //
-// 	struct {
-// 		Namespace               string                 	`bq:",omitempty"`
-// 		CreatedAt               *TimeRange 			   	`bq:",omitempty"`
-// 		EmissionDate            *TimeRange 			   	`bq:",omitempty"`
-// 		EmissionDateWithoutTime *TimeRange 			   	`bq:",omitempty" format:"2006-01-02"`
-// 		Owners                  []string               	`bq:"Owner,omitempty"`
-// 		OwnerRoles              []string               	`bq:",unnest,omitempty"`
-// 		IsTaker                 *bool                  	`bq:",omitempty"`
-// 	}
-// nolint: gocognit,cyclop
+//	struct {
+//		Namespace               string                 	`bq:",omitempty"`
+//		CreatedAt               *TimeRange 			   	`bq:",omitempty"`
+//		EmissionDate            *TimeRange 			   	`bq:",omitempty"`
+//		EmissionDateWithoutTime *TimeRange 			   	`bq:",omitempty" format:"2006-01-02"`
+//		Owners                  []string               	`bq:"Owner,omitempty"`
+//		OwnerRoles              []string               	`bq:",unnest,omitempty"`
+//		IsTaker                 *bool                  	`bq:",omitempty"`
+//	}
+//
+//nolint: gocognit,cyclop
 func EncodeBigqueryWhereClause(filter interface{}) (string, []bigquery.QueryParameter, error) {
 	rv := reflect.ValueOf(filter)
 	if rv.Kind() != reflect.Struct {

@@ -14,7 +14,6 @@ require (
 	cloud.google.com/go/compute/metadata v0.2.3 // indirect
 	cloud.google.com/go/iam v0.13.0 // indirect
 	github.com/andybalholm/brotli v1.0.4 // indirect
-	github.com/apache/arrow/go/v10 v10.0.1 // indirect
 	github.com/apache/arrow/go/v11 v11.0.0 // indirect
 	github.com/apache/thrift v0.16.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
