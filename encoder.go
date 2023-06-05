@@ -22,7 +22,7 @@ import (
 //		IsTaker                 *bool                  	`bq:",omitempty"`
 //	}
 //
-// nolint: gocognit,cyclop
+//nolint: gocognit,cyclop
 func EncodeBigqueryWhereClause(filter interface{}) (string, []bigquery.QueryParameter, error) {
 	rv := reflect.ValueOf(filter)
 	if rv.Kind() != reflect.Struct {
