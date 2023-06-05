@@ -123,7 +123,6 @@ func (b *columnsClauseBuilder) getSegment(name string) *columnNameSegment {
 	return nil
 }
 
-//nolint: errcheck
 // write writes all added columns to the string writer.
 func (b *columnsClauseBuilder) write(w io.StringWriter) {
 	for i, c := range b.columns {

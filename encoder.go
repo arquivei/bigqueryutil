@@ -21,8 +21,6 @@ import (
 //		OwnerRoles              []string               	`bq:",unnest,omitempty"`
 //		IsTaker                 *bool                  	`bq:",omitempty"`
 //	}
-//
-//nolint: gocognit,cyclop
 func EncodeBigqueryWhereClause(filter interface{}) (string, []bigquery.QueryParameter, error) {
 	rv := reflect.ValueOf(filter)
 	if rv.Kind() != reflect.Struct {
