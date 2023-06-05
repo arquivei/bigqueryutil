@@ -1,23 +1,26 @@
 # Full list on https://golangci-lint.run/usage/linters/
+linters-settings:
+  errcheck:
+    check-type-assertions: false
+    check-blank: false
+    exclude-functions:
+      - (io.StringWriter).WriteString
+
 linters:
   disable-all: true
   enable:
-    - deadcode # Finds unused code [fast: false, auto-fix: false]
     - errcheck # Errcheck is a program for checking for unchecked errors in go programs. These unchecked errors can be critical bugs in some cases [fast: false, auto-fix: false]
     - gosimple #(megacheck): Linter for Go source code that specializes in simplifying a code [fast: false, auto-fix: false]
     - govet #(vet, vetshadow): Vet examines Go source code and reports suspicious constructs, such as Printf calls whose arguments do not align with the format string [fast: false, auto-fix: false]
     - ineffassign # Detects when assignments to existing variables are not used [fast: true, auto-fix: false]
     - staticcheck #(megacheck): Staticcheck is a go vet on steroids, applying a ton of static analysis checks [fast: false, auto-fix: false]
-    - structcheck # Finds unused struct fields [fast: false, auto-fix: false]
     - typecheck # Like the front-end of a Go compiler, parses and type-checks Go code [fast: false, auto-fix: false]
     - unused #(megacheck): Checks Go code for unused constants, variables, functions and types [fast: false, auto-fix: false]
-    - varcheck # Finds unused global variables and constants [fast: false, auto-fix: false]
     - asciicheck # Simple linter to check that your code does not contain non-ASCII identifiers [fast: true, auto-fix: false]
     - bidichk # Checks for dangerous unicode character sequences [fast: true, auto-fix: false]
     - bodyclose # checks whether HTTP response body is closed successfully [fast: false, auto-fix: false]
     - containedctx # containedctx is a linter that detects struct contained context.Context field [fast: true, auto-fix: false]
     - contextcheck # check the function whether use a non-inherited context [fast: false, auto-fix: false]
-    - cyclop # checks function and package cyclomatic complexity [fast: false, auto-fix: false]
     - decorder # check declaration order and count of types, constants, variables and functions [fast: true, auto-fix: false]
     - depguard # Go linter that checks if package imports are in a list of acceptable packages [fast: false, auto-fix: false]
     - dogsled # Checks assignments with too many blank identifiers (e.g. x, _, _, _, := f()) [fast: true, auto-fix: false]
@@ -32,7 +35,6 @@ linters:
     - gci # Gci controls golang package import order and makes it always deterministic. [fast: true, auto-fix: false]
     - gochecknoglobals # check that no global variables exist [fast: true, auto-fix: false]
     - gochecknoinits # Checks that no init functions are present in Go code [fast: true, auto-fix: false]
-    - gocognit # Computes and checks the cognitive complexity of functions [fast: true, auto-fix: false]
     - goconst # Finds repeated strings that could be replaced by a constant [fast: true, auto-fix: false]
     - gocritic # Provides diagnostics that check for bugs, performance and style issues. [fast: false, auto-fix: false]
     - gocyclo # Computes and checks the cyclomatic complexity of functions [fast: true, auto-fix: false]
@@ -73,6 +75,11 @@ linters:
     - unparam # Reports unused function parameters [fast: false, auto-fix: false]
     - wastedassign # wastedassign finds wasted assignment statements. [fast: false, auto-fix: false]
     - whitespace # Tool for detection of leading and trailing whitespace [fast: true, auto-fix: true]
+    # - cyclop # checks function and package cyclomatic complexity [fast: false, auto-fix: false]
+    # - gocognit # Computes and checks the cognitive complexity of functions [fast: true, auto-fix: false]
+    # - varcheck # Finds unused global variables and constants [fast: false, auto-fix: false]
+    # - deadcode # Finds unused code [fast: false, auto-fix: false]
+    # - structcheck # Finds unused struct fields [fast: false, auto-fix: false]
     # - gofumpt # Gofumpt checks whether code was gofumpt-ed. [fast: true, auto-fix: true]
     # - maintidx # maintidx measures the maintainability index of each function. [fast: true, auto-fix: false]
     # - funlen # Tool for detection of long functions [fast: true, auto-fix: false]

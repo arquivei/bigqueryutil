@@ -27,11 +27,12 @@ type columnNameSegment struct {
 // fullnameInsideArray will return the name of the segment pre-appended with its parent fullnameInsideArray if exists.
 // But if the parent is an array it returns its current name because thats just how it works
 // Examples:
-//   AccessKey -> AccessKey
-//   NFe.infNFe -> NFe.infNFe
-//   NFe.infNFe.ide.nNF -> NFe.infNFe.ide.nNF
-//   Events.Date -> Date
-//   NFe.infNFe.det.imposto.ICMS.ICMS00.vICMS -> imposto.ICMS.ICMS00.vICMS
+//
+//	AccessKey -> AccessKey
+//	NFe.infNFe -> NFe.infNFe
+//	NFe.infNFe.ide.nNF -> NFe.infNFe.ide.nNF
+//	Events.Date -> Date
+//	NFe.infNFe.det.imposto.ICMS.ICMS00.vICMS -> imposto.ICMS.ICMS00.vICMS
 func (cns *columnNameSegment) fullnameInsideArray() string {
 	if cns.parent != nil && cns.parent._type != columnNameSegmentArray {
 		return cns.parent.fullnameInsideArray() + "." + cns.name
@@ -122,7 +123,6 @@ func (b *columnsClauseBuilder) getSegment(name string) *columnNameSegment {
 	return nil
 }
 
-// nolint: errcheck
 // write writes all added columns to the string writer.
 func (b *columnsClauseBuilder) write(w io.StringWriter) {
 	for i, c := range b.columns {
