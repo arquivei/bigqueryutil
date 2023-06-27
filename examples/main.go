@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/arquivei/bigqueryutil"
 	"github.com/arquivei/foundationkit/ref"
-	"github.com/bigqueryutil"
 )
 
 func main() {
