@@ -1,4 +1,4 @@
-module github.com/bigqueryutil
+module github.com/arquivei/bigqueryutil
 
 go 1.19
 
