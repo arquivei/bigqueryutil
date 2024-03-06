@@ -5,7 +5,7 @@ go 1.21
 require (
 	cloud.google.com/go/bigquery v1.59.1
 	github.com/arquivei/foundationkit v0.6.1
-	github.com/stretchr/testify v1.8.4
+	github.com/stretchr/testify v1.9.0
 )
 
 require (
