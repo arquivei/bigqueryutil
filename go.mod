@@ -2,7 +2,7 @@ module github.com/arquivei/bigqueryutil
 
 go 1.22.7
 
-toolchain go1.23.4
+toolchain go1.23.5
 
 require (
 	cloud.google.com/go/bigquery v1.65.0
