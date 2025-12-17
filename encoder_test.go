@@ -42,7 +42,7 @@ func TestMarshalWhereClause(t *testing.T) {
 				Namespace *string
 				Empty     string `bq:",omitempty"`
 			}{
-				Namespace: ref.Str("tiramissu"),
+				Namespace: ref.Of("tiramissu"),
 			},
 			want: want{
 				query: "Namespace = @Namespace",
@@ -183,7 +183,7 @@ func TestMarshalWhereClause(t *testing.T) {
 				},
 				Owners:     []string{"owner1", "owner2"},
 				OwnerRoles: []string{"role1", "role2"},
-				IsTaker:    ref.Bool(false),
+				IsTaker:    ref.Of(false),
 			},
 			want: want{
 				query: `Namespace = @Namespace` +
@@ -253,7 +253,7 @@ func TestMarshalWhereClause(t *testing.T) {
 				},
 				Owners:     []string{},
 				OwnerRoles: []string{"role1", "role2"},
-				IsTaker:    ref.Bool(false),
+				IsTaker:    ref.Of(false),
 			},
 			want: want{
 				query: `Namespace = @Namespace` +

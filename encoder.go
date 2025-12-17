@@ -155,10 +155,10 @@ func parseFieldParameters(tag string) fieldParameters {
 		} else {
 			part, tag = tag[:i], tag[i+1:]
 		}
-		switch {
-		case part == "unnest":
+		switch part {
+		case "unnest":
 			params.unnest = true
-		case part == "omitempty":
+		case "omitempty":
 			params.omitEmpty = true
 		}
 	}
