@@ -3,7 +3,7 @@ module github.com/arquivei/bigqueryutil
 go 1.25
 
 require (
-	cloud.google.com/go/bigquery v1.73.0
+	cloud.google.com/go/bigquery v1.73.1
 	github.com/arquivei/foundationkit v0.10.4
 	github.com/stretchr/testify v1.11.1
 )
