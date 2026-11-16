@@ -4,7 +4,7 @@ go 1.27
 
 require (
 	cloud.google.com/go/bigquery v1.86.2
-	github.com/arquivei/foundationkit v0.14.0
+	github.com/arquivei/foundationkit v0.14.1
 	github.com/stretchr/testify v1.12.1
 )
 
